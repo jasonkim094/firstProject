@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!--required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+
+    <!--bootstrap, datetimepicker CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+
+    <!--jquery, bootstrap, datetimepicker JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/ko.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!--        구글폰트-->
+    <!--        <link rel="stylesheet" href="">-->
+
+    <!--CSS-->
+    <link rel="stylesheet" href="../static/deliver.css">
+
+    <title>오늘 하루</title>
+    <script>
+
+        $(function() {
+            // @@@1@@@
+            $("#datetimePicker").datetimepicker({
+                format: "YYYY-MM-DD"
+            });
+            // @@@2@@@
+            let current = document.querySelector("#current");
+            let imgs = document.querySelectorAll(".imgs img");
+            let opacity = 0.4;
+            imgs.forEach(img => img.addEventListener('click', imgClick));
+
+            function imgClick(e) {
+                imgs.forEach(img => (img.style.opacity = 1));
+                current.src = e.target.src;
+                e.target.style.opacity = opacity;
+            };
+        });
+
+        function submitReview() {
+            let date = document.getElementById("todayDate").value;
+            let rate = document.getElementById("todayRate").value;
+            let keyword = document.getElementById("todayKeyWord").value;
+            let content = document.getElementById("todayContent").value;
+
+            if (date === "") {
+                alert("오늘 날짜를 확인하세요!");
+                document.getElementById("todayDate").focus();
+                return;
+            }
+            if (rate === "") {
+                alert("오늘 하루 평점을 입력하세요!");
+                document.getElementById("todayRate").focus();
+                return;
+            }
+            if (keyword === "") {
+                alert("오늘 하루 키워드를 입력하세요!");
+                document.getElementById("todayKeyWord").focus();
+                return;
+            }
+            if (content === "") {
+                alert("일기를 작성하세요!");
+                document.getElementById("todayContent").focus();
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/diaries",
+                data: {
+                    'date': date,
+                    'rate': rate,
+                    'keyword': keyword,
+                    'content': content
+                },
+                success: function(response) {
+                    if (response["result"] === "success") {
+                        alert(response['msg']);
+                        window.location.reload();
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <div class="date">
+            <div>
+                <img src="../static/alien1.svg" alt="" style="width: 25px; height: 30px;">
+                <label for="todayDate"> 오늘 하루 날짜는?</label>
+            </div>
+            <div class="input-group" id="datetimePicker" style="margin-left: 27px;">
+                <input type="text" class="form-control" id="todayDate" required>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+
+        <div class="rate">
+            <div>
+                <img src="../static/alien2.svg" alt="" style="width: 25px; height: 30px;">
+                <label> 오늘 하루 몇점? </label>
+            </div>
+            <div style="margin-left: 27px;">
+                <input type="text" class="form-control" id="todayRate" placeholder="10점 만점 중? ex) 7.5" required>
+            </div>
+        </div>
+
+        <div class="keyWord">
+            <div>
+                <img src="../static/alien3.svg" alt="" style="width: 25px; height: 30px;">
+                <label>오늘 하루 키워드 하나로!</label>
+            </div>
+            <div style="margin-left: 27px;">
+                <input type="text" class="form-control" id="todayKeyWord" placeholder="#" required>
+            </div>
+        </div>
+
+        <div class="content">
+            <div>
+                <img src="../static/alien4.svg" alt="" style="width: 25px; height: 30px;">
+                <label>오늘 하루 기록하기!</label>
+            </div>
+            <div>
+                <textarea name="opinion" id="todayContent" cols="50" rows="10" style="margin-left: 27px;"
+                          placeholder=" **여기에 모두 뱉어내세요**" required></textarea>
+            </div>
+        </div>
+
+        <div class="image">
+            <div>
+                <img src="../static/alien5.svg" alt="" style="width: 25px; height: 30px;">
+                <label>오늘 하루 감상하기!</label>
+            </div>
+            <div class="imageContainer">
+                <div class="main-img">
+                    <img src="../static/alien1.svg" id="current">
+                </div>
+
+                <div class="imgs">
+                    <img src="../static/alien2.svg">
+                    <img src="../static/alien3.svg">
+                    <img src="../static/alien4.svg">
+                    <img src="../static/alien5.svg">
+                </div>
+            </div>
+        </div>
+
+        <div class="submitBox">
+            <img src="../static/alien6.svg" alt="" style="width: 25px; height: 30px;">
+            <button type="button" class="btn btn-danger" id="submit" onclick="submitReview()">오늘 하루 끝!!!</button>
+        </div>
+
+        <div>
+            <div>
+                <input type="button" value="move" onclick="location.href='/'">
+                <!--<input type="button" value="move" onclick="window.open('/deliver')">-->
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

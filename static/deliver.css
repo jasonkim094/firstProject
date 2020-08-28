@@ -1,0 +1,38 @@
+.date, .rate, .keyWord {
+    width: 400px;
+    margin: 40px;
+    padding: 10px;
+    border: 4px dashed lightcoral;
+    border-radius: 10px;
+}
+
+.content {
+    width: 500px;
+    margin: 40px;
+    padding: 10px;
+    border: 4px dashed lightcoral;
+    border-radius: 10px;
+}
+
+.image {
+    width: 800px;
+    margin: 40px;
+    padding: 10px;
+    border: 4px dashed lightcoral;
+    border-radius: 10px;
+}
+
+.imageContainer {
+    max-width: 500px;
+    margin: auto;
+}
+
+.main-img img, .imgs img {
+    width: 100%
+}
+
+.imgs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+}

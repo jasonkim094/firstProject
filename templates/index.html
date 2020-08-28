@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>오늘하루</title>
+
+    <!--css-->
+    <link rel="stylesheet" href="../static/main.css">
+    <!--jquery & js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../static/main.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <table id="historySet">
+        <thead>
+            <tr>
+                <th class="col1">날짜</th>
+                <th class="col2">평점</th>
+                <th class="col3">키워드</th>
+                <th class="col4">내용</th>
+            </tr>
+        </thead>
+        <tbody id="history">
+
+        </tbody>
+    </table>
+
+    <div>
+        <div>
+            <input type="button" value="move" onclick="location.href='/deliver'">
+            <!--<input type="button" value="move" onclick="window.open('/deliver')">-->
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
