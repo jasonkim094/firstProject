@@ -1,36 +1,145 @@
-.container {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background: #F3F3F3;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+    background-color: #EEE;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .2);
+    font-size: 70px;
+    margin-top: 60px;
+}
+
+header div {
+    margin: 0 50px;
+}
+header div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+header div:nth-child(1) div:nth-child(2) p {
+    text-shadow: 1px 1px 1px gray;
+}
+
+header div:nth-child(1) img:nth-child(3) {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH();
+    -ms-filter: "FlipH";
+}
+
+header div:nth-child(2) {
     display: flex;
 }
 
+header div:nth-child(2) div:nth-child(2) p {
+    text-shadow: 3px 2px 2px gray;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+#toWrite {
+    width: 130px;
+    height: 30px;
+    background-color: sandybrown;
+    border-radius: 10px;
+    border: 1px solid sandybrown;
+    box-shadow: 2px 2px 2px gray;
+    margin-top: 45px;
+    transition: .3s
+}
+
+#toWrite:hover {
+    background-color: mediumpurple;
+    border: 1px solid mediumpurple;
+}
+
+#toWrite:focus {
+    background-color: blueviolet;
+    outline: none;
+}
+
+section {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+}
+
 #historySet {
-    width: 1000px;
-    border: 3px dashed lightcoral;
-    border-collapse: collapse;
+    width: 800px;
+    border: 4px dashed sandybrown;
+    margin-top: 50px;
 }
 
-th, td {
-    border-bottom: 1px solid lightcoral;
-    padding: 10px;
-}
-#history tr:nth-child(even) {
-    background-color: lavenderblush;
-    height: 30px;
-}
-
-#history tr:nth-child(odd) {
-    background-color: ivory;
-    height: 30px;
+#historySet > thead > tr {
+    background-color: #EEE;
 }
 
 .col1 {
-    width: 120px;
+    width: 150px;
     height: 40px;
 }
 
 .col2 {
-    width: 60px;
+    width: 70px;
 }
 
 .col3 {
-    width: 80px;
+    width: 85px;
+}
+
+.col4 {
+    width: 477px;
+}
+
+#historySet thead {
+    font-size: 15px;
+}
+
+#historySet .col1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#historySet .col1 img {
+    margin-right: 3px;
+}
+
+
+
+#historySet tbody {
+    font-size: 14px;
+}
+
+#history tr{
+    height: 40px;
+}
+
+#history tr:nth-child(odd) {
+    background-color: bisque;
+}
+
+#history tr:nth-child(even) {
+    background-color: blanchedalmond;
 }

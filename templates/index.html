@@ -6,35 +6,67 @@
     <title>오늘하루</title>
 
     <!--css-->
-    <link rel="stylesheet" href="../static/main.css">
+    <link rel="stylesheet" href="../static/main.css?ver=1">
     <!--jquery & js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../static/main.js"></script>
 </head>
 
 <body>
-<div class="container">
-    <table id="historySet">
-        <thead>
-            <tr>
-                <th class="col1">날짜</th>
-                <th class="col2">평점</th>
-                <th class="col3">키워드</th>
-                <th class="col4">내용</th>
-            </tr>
-        </thead>
-        <tbody id="history">
-
-        </tbody>
-    </table>
-
-    <div>
+    <header>
         <div>
-            <input type="button" value="move" onclick="location.href='/deliver'">
-            <!--<input type="button" value="move" onclick="window.open('/deliver')">-->
+            <img src="../static/alien1.svg" style="width:35px; height:35px;">
+            <div>
+                <p>작심삼일 금물! 1일 1회 다이어리 쓰기!</p>
+            </div>
+            <img src="../static/alien1.svg" style="width:35px; height:35px;">
         </div>
-    </div>
-</div>
+        <div>
+            <img src="../static/alien2.svg" style="width:70px; height:70px;">
+            <div>
+                <p>오늘하루</p>
+            </div>
+            <img src="../static/alien2.svg" style="width:70px; height:70px;">
+        </div>
+    </header>
+
+    <nav>
+        <div>
+            <input id ="toWrite" type="button" value="다이어리 작성하기" onclick="location.href='/write'">
+        </div>
+    </nav>
+
+    <section>
+        <table id="historySet">
+            <thead>
+                <tr>
+                    <th class="col1">
+                        <img src="../static/cal.svg" style="width:15px; height:15px;">
+                        날짜
+                    </th>
+                    <th class="col2">
+                        <img src="../static/star.svg" style="width:15px; height:15px;">
+                        평점
+                    </th>
+                    <th class="col3">
+                        <img src="../static/key.svg" style="width: 15px; height: 15px;">
+                        키워드
+                    </th>
+                    <th class="col4">
+                        <img src="../static/content.svg" style="width: 15px; height: 15px;">
+                        내용
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="history">
+            <!--codes will be added-->
+            </tbody>
+        </table>
+        <div id="pagination">
+            <!--codes will be added-->
+        </div>
+    </section>
+
 </body>
 
 </html>

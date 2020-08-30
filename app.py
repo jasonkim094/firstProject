@@ -12,16 +12,16 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/deliver')
-def deliver():
-    return render_template('deliver.html')
+@app.route('/write')
+def write_one():
+    return render_template('write.html')
 
 
 @app.route('/diaries', methods=['GET'])
 def read_diary():
     history = list(db.daily.find({}, {'_id': False}))
     return jsonify({'result': 'success', 'history': history})
-r
+
 
 @app.route('/diaries', methods=['POST'])
 def write_diary():
