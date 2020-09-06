@@ -59,7 +59,7 @@ function modifyReview() {
 
     $.ajax({
         type: "POST",
-        url: "/diaries2",
+        url: "/modify_one",
         data: {
             'date': date,
             'rate': rate,

@@ -11,7 +11,7 @@ $(document).ready(function() {
 function displayList (wrapper, rowsPerPage, page) {
     $.ajax({
         type: "GET",
-        url: "/diaries1",
+        url: "/diaries",
         data: {},
         success: function (response) {
             if (response['result'] === 'success') {
@@ -68,7 +68,7 @@ function displayList (wrapper, rowsPerPage, page) {
 function setupPagination (wrapper, rowsPerPage) {
     $.ajax({
         type: "GET",
-        url: "/diaries1",
+        url: "/diaries",
         data: {},
         success: function (response) {
             let journals = response['history'];
@@ -107,7 +107,7 @@ function seeJournal(self) {
     let targetDate = self.parentNode.parentNode.childNodes[0].innerText;
     $.ajax({
         type: "POST",
-        url: "/diaries3",
+        url: "/createTarget",
         data: {
             'target': targetDate
         },

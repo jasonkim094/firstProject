@@ -27,25 +27,13 @@ def see_one():
     return render_template('see.html')
 
 
-@app.route('/diaries1', methods=['GET'])
+@app.route('/diaries', methods=['GET'])
 def read_diary():
     history = list(db.daily.find({}, {'_id': False}))
     return jsonify({'result': 'success', 'history': history})
 
 
-@app.route('/diaries2', methods=['GET'])
-def read_diary2():
-    history = list(db.daily.find({}, {'_id': False}))
-    return jsonify({'result': 'success', 'history': history})
-
-
-@app.route('/diaries3', methods=['GET'])
-def read_diary3():
-    history = list(db.daily.find({}, {'_id': False}))
-    return jsonify({'result': 'success', 'history': history})
-
-
-@app.route('/diaries1', methods=['POST'])
+@app.route('/write_one', methods=['POST'])
 def write_diary():
     date = request.form['date']
     rate = request.form['rate']
@@ -65,20 +53,19 @@ def write_diary():
     return jsonify({'result': 'success', 'msg': '하루가 기록되었습니다!'})
 
 
-@app.route('/diaries2', methods=['POST'])
+@app.route('/modify_one', methods=['POST'])
 def modify_diary():
     date = request.form['date']
     rate = request.form['rate']
     keyword = request.form['keyword']
     content = request.form['content']
-    show_status = request.form['status']
 
     db.daily.update_one({'show_status': 1}, {
         '$set': {'date': date, 'rate': rate, 'keyword': keyword, 'content': content, 'show_status': 0}})
     return jsonify({'result': 'success', 'msg': '하루가 수정되었습니다!'})
 
 
-@app.route('/diaries3', methods=['POST'])
+@app.route('/createTarget', methods=['POST'])
 def current_diary():
     target = request.form['target']
     db.daily.update_one({'date': target}, {'$set': {'show_status': 1}})

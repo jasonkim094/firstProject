@@ -45,7 +45,7 @@ function submitReview() {
 
     $.ajax({
         type: "POST",
-        url: "/diaries1",
+        url: "/write_one",
         data: {
             'date': date,
             'rate': rate,
