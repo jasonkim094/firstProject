@@ -19,13 +19,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/ko.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
-    <script src="../static/deliver.js"></script>
+    <script src="../static/see.js"></script>
     <!--        구글폰트-->
     <!--        <link rel="stylesheet" href="">-->
 
     <!--CSS-->
-    <link rel="stylesheet" href="../static/deliver.css">
+    <link rel="stylesheet" href="../static/see.css">
 
     <title>오늘 하루</title>
 </head>
@@ -42,7 +41,7 @@
 
     <nav>
         <div class="submitBox">
-            <input type="button" value="저장하기" id="submitBtn" onclick="submitReview()">
+            <input type="button" value="수정하기" id="submitBtn" onclick="location.href='/modify'">
         </div>
         <div class="homeBox">
             <input type="button" value="홈으로" id="backHomeBtn" onclick="location.href='/'">
@@ -57,11 +56,9 @@
                     <img src="../static/planet1.svg" alt="" style="width: 30px; height:30px;">
                     <label for="todayDate"> 오늘 하루 날짜는?</label>
                 </div>
-                <div class="input-group" id="datetimePicker" style="margin: 10px 0 0 35px;">
-                    <input type="text" class="form-control" id="todayDate" required autofocus>
-                    <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
+                <div>
+                    <div id="todayDate">
+                    </div>
                 </div>
             </div>
             <div class="rateBlock">
@@ -70,7 +67,8 @@
                     <label> 오늘 하루 몇점? </label>
                 </div>
                 <div style="margin: 10px 0 0 35px;">
-                    <input type="text" class="form-control" id="todayRate" placeholder="     / 10" required>
+                    <div id="todayRate">
+                    </div>
                 </div>
             </div>
             <div class="keywordBlock">
@@ -79,7 +77,8 @@
                     <label>오늘 하루 키워드 하나로!</label>
                 </div>
                 <div style="margin: 10px 0 0 35px;">
-                    <input type="text" class="form-control" id="todayKeyWord" placeholder="#" required>
+                    <div id="todayKeyWord">
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,8 +89,8 @@
                     <label>오늘 하루 기록하기!</label>
                 </div>
                 <div>
-                    <textarea name="opinion" class="form-control" id="todayContent" cols="20" rows="15"
-                              placeholder=" 오늘하루를 담아주세요." required></textarea>
+                    <div id="todayContent">
+                    </div>
                 </div>
             </div>
         </div>

@@ -8,17 +8,16 @@ $(document).ready(function() {
     setupPagination(paginationElement, rows);
 });
 
-// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 function displayList (wrapper, rowsPerPage, page) {
     $.ajax({
         type: "GET",
-        url: "/diaries",
+        url: "/diaries1",
         data: {},
         success: function (response) {
             if (response['result'] === 'success') {
                 wrapper.innerHTML = "";
                 page--;
-                let journals = response['history']
+                let journals = response['history'].reverse();
                 let start = page * rowsPerPage;
                 let end = start + rowsPerPage;
                 let paginatedJournals = journals.slice(start, end);
@@ -37,16 +36,27 @@ function displayList (wrapper, rowsPerPage, page) {
                     let journalElementItem2 = document.createElement('td');
                     let journalElementItem3 = document.createElement('td');
                     let journalElementItem4 = document.createElement('td');
+                    let journalElementItem5 = document.createElement('td');
+
+                    let journalElementBtn5 = document.createElement('input');
 
                     journalElementItem1.innerText = date;
                     journalElementItem2.innerText = rate;
                     journalElementItem3.innerText = keyword;
                     journalElementItem4.innerText = content;
+                    journalElementBtn5.setAttribute('type', 'button');
+                    journalElementBtn5.setAttribute('class', 'showJournalBtn');
+                    journalElementBtn5.setAttribute('value', '보기');
+                    journalElementBtn5.setAttribute("onclick", "location.href='/see'; seeJournal(this)");
+                    // journalElementBtn5.setAttribute("onclick", "seeJournal(this)")
+
+                    journalElementItem5.appendChild(journalElementBtn5);
 
                     journalElement.appendChild(journalElementItem1);
                     journalElement.appendChild(journalElementItem2);
                     journalElement.appendChild(journalElementItem3);
                     journalElement.appendChild(journalElementItem4);
+                    journalElement.appendChild(journalElementItem5);
 
                     wrapper.appendChild(journalElement);
                 };
@@ -58,7 +68,7 @@ function displayList (wrapper, rowsPerPage, page) {
 function setupPagination (wrapper, rowsPerPage) {
     $.ajax({
         type: "GET",
-        url: "/diaries",
+        url: "/diaries1",
         data: {},
         success: function (response) {
             let journals = response['history'];
@@ -91,4 +101,17 @@ function paginationButton(page) {
         button.classList.add('active');
     });
     return button;
+};
+
+function seeJournal(self) {
+    let targetDate = self.parentNode.parentNode.childNodes[0].innerText;
+    $.ajax({
+        type: "POST",
+        url: "/diaries3",
+        data: {
+            'target': targetDate
+        },
+        success: function(response) {
+        }
+    });
 };

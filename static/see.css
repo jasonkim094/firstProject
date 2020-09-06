@@ -80,6 +80,10 @@ nav {
     padding: 10px;
     border: 4px dashed cornflowerblue;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .dateBlock div:nth-child(1) {
@@ -91,9 +95,24 @@ nav {
     margin-left: 5px;
 }
 
-#todayDate:focus {
-    border-color: cornflowerblue;
-    outline: none;
+.dateBlock div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 40px;
+    margin-left: 30px;
+    margin-top: 10px;
+    border: 1px solid
+}
+
+#todayDate {
+    width: 100px;
+    height: 30px;
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .rateBlock div:nth-child(1) {
@@ -105,9 +124,24 @@ nav {
     margin-left: 5px;
 }
 
-#todayRate:focus {
-    border-color: cornflowerblue;
-    outline: none;
+.rateBlock div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 40px;
+    margin-left: 30px;
+    margin-top: 10px;
+    border: 1px solid
+}
+
+#todayRate {
+    width: 100px;
+    height: 30px;
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .keywordBlock div:nth-child(1) {
@@ -119,14 +153,29 @@ nav {
     margin-left: 5px;
 }
 
-#todayKeyWord:focus {
-    border-color: cornflowerblue;
-    outline: none;
+.keywordBlock div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 40px;
+    margin-left: 30px;
+    margin-top: 10px;
+    border: 1px solid
+}
+
+#todayKeyWord {
+    width: 100px;
+    height: 30px;
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .contentBlock {
     width: 500px;
-    height:425px;
+    height:445px;
     margin: 60px 20px;
     padding: 10px;
     border: 4px dashed cornflowerblue;
@@ -144,12 +193,24 @@ nav {
 }
 
 .content div:nth-child(2) {
-    padding: 20px 30px;
+    width: 300px;
+    height: 350px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 85px;
+}
+
+#todayContent {
+    width: 250px;
+    height: 330px;
+    background-color: lightgreen;
 }
 
 .galleryBlock {
-    width: 700px;
-    height: 800px;
+    width: 600px;
+    height: 700px;
     display: flex;
     flex-direction: column;
     border: 4px dashed cornflowerblue;
@@ -169,8 +230,8 @@ nav {
 }
 
 .imageContainer {
-    max-width: 500px;
-    margin: 40px 110px;
+    max-width: 100%;
+    margin: 40px 70px;
 }
 
 .main-img img, .imgs img {

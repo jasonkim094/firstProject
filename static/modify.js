@@ -1,22 +1,36 @@
-$(function () {
-    // @@@1@@@
-    $("#datetimePicker").datetimepicker({
-        format: "YYYY-MM-DD"
+$(document).ready(function () {
+    showModifyTarget();
+})
+
+function showModifyTarget() {
+    $.ajax({
+        type: "GET",
+        url: "/modifyDiaries",
+        data: {},
+        success: function(response) {
+            if(response['result'] === 'success') {
+                let targetData = response['target_data'];
+
+                let targetDate = targetData[0]['date'];
+                let targetRate = targetData[0]['rate'];
+                let targetKeyword = targetData[0]['keyword'];
+                let targetContent = targetData[0]['content'];
+
+                let date = document.getElementById('todayDate');
+                let rate = document.getElementById('todayRate');
+                let keyword= document.getElementById('todayKeyWord');
+                let content = document.getElementById('todayContent');
+
+                date.setAttribute('value', targetDate);
+                rate.setAttribute('value', targetRate);
+                keyword.setAttribute('value', targetKeyword);
+                content.innerText = targetContent;
+            };
+        }
     });
-    // @@@2@@@
-    let current = document.querySelector("#current");
-    let imgs = document.querySelectorAll(".imgs img");
-    let opacity = 0.4;
-    imgs.forEach(img => img.addEventListener('click', imgClick));
+};
 
-    function imgClick(e) {
-        imgs.forEach(img => (img.style.opacity = 1));
-        current.src = e.target.src;
-        e.target.style.opacity = opacity;
-    };
-});
-
-function submitReview() {
+function modifyReview() {
     let date = document.getElementById("todayDate").value;
     let rate = document.getElementById("todayRate").value;
     let keyword = document.getElementById("todayKeyWord").value;
@@ -45,13 +59,13 @@ function submitReview() {
 
     $.ajax({
         type: "POST",
-        url: "/diaries1",
+        url: "/diaries2",
         data: {
             'date': date,
             'rate': rate,
             'keyword': keyword,
             'content': content,
-            'status': 0
+            'status': 1
         },
         success: function (response) {
             if (response["result"] === "success") {

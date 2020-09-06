@@ -67,7 +67,7 @@ nav {
     box-shadow: 1px 1px 1px gray;
     text-shadow: 0px 0px 3px rgba(0, 0, 0, .2);
     margin-top: 45px;
-    transition: .35s;
+    transition: .4s;
     cursor: pointer;
 }
 
@@ -99,7 +99,7 @@ section {
 }
 
 .col1 {
-    width: 150px;
+    width: 160px;
     height: 40px;
 }
 
@@ -113,6 +113,10 @@ section {
 
 .col4 {
     width: 477px;
+}
+
+.col5 {
+    width: 60px;
 }
 
 #historySet thead {
@@ -145,6 +149,30 @@ section {
     background-color: blanchedalmond;
 }
 
+.showJournalBtn {
+    width: 30px;
+    height: 20px;
+    margin-left: 15px;
+    font-size: 12px;
+    appearance: none;
+    border: none;
+    background-color: sandybrown;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, .2);
+}
+
+.showJournalBtn:hover {
+    background-color: mediumpurple;
+    border: 1px solid mediumpurple;
+}
+
+.showJournalBtn:active {
+    background-color: lightgreen;
+    box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+
 #pagination {
     display: flex;
     flex-wrap: wrap;
@@ -163,7 +191,7 @@ section {
     cursor: pointer;
     background-color: sandybrown;
     margin: 0px 5px;
-    transition: .35s;
+    transition: .4s;
     text-shadow: 0px 0px 3px rgba(0, 0, 0, .2);
     box-shadow: 0px 0px 3px rgba(0, 0, 0, .2);
 }
