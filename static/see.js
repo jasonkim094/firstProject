@@ -1,6 +1,5 @@
 $(document).ready(function () {
     showSeeTarget();
-    movePage();
 })
 
 function showSeeTarget() {
@@ -26,6 +25,22 @@ function showSeeTarget() {
                 rate.innerText = targetRate;
                 keyword.innerText = targetKeyword;
                 content.innerText = targetContent;
+            };
+        }
+    });
+};
+
+function deleteDiary() {
+    let targetToken = document.getElementById('todayDate').innerText;
+    $.ajax({
+        type: "POST",
+        url: "deleteDiaries",
+        data: {
+            'target': targetToken
+        },
+        success: function(response) {
+            if (response['result'] === 'success') {
+                alert(response['msg']);
             };
         }
     });

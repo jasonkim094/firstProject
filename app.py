@@ -84,5 +84,12 @@ def see_diary():
     return jsonify({'result': 'success', 'target_data': target})
 
 
+@app.route('/deleteDiaries', methods=['POST'])
+def delete_diary():
+    target = request.form['target']
+    db.daily.delete_one({'date': target})
+    return jsonify({'result': 'success', 'msg': '삭제되었습니다!'})
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
