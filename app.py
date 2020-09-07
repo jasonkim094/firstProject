@@ -72,6 +72,12 @@ def current_diary():
     return jsonify({'result': 'success'})
 
 
+@app.route('/deleteTarget', methods=['POST'])
+def delete_target():
+    db.daily.update_many({}, {'$set': {'show_status': 0}})
+    return jsonify({'result': 'success', 'msg': '오늘하루 고생했어요!'})
+
+
 @app.route('/modifyDiaries', methods=['GET'])
 def see_diary():
     target = list(db.daily.find({'show_status': 1}, {'_id': False}))

@@ -4,6 +4,7 @@ $(document).ready(function() {
     const rows = 5;
     let currentPage = 1;
 
+    resetStatus();
     displayList(historyElement, rows, currentPage);
     setupPagination(paginationElement, rows);
 });
@@ -115,3 +116,13 @@ function seeJournal(self) {
         }
     });
 };
+
+function resetStatus() {
+    $.ajax({
+        type: "POST",
+        url: "/deleteTarget",
+        data:{},
+        success: function(response) {
+        }
+    })
+}

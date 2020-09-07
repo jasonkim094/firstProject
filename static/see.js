@@ -1,5 +1,6 @@
 $(document).ready(function () {
     showSeeTarget();
+    movePage();
 })
 
 function showSeeTarget() {
